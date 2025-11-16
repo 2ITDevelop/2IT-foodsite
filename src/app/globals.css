@@ -1,26 +1,96 @@
 @import "tailwindcss";
 
+/* ── Token di base (tema chiaro Officina) ─────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f3ee;  /* sfondo caldo */
+  --foreground: #171717;  /* testo principale */
+  --accent: #b7352c;      /* rosso paninoteca */
 }
 
+/* Mappo i token per Tailwind v4 */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-accent: var(--accent);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* ── Base tipografia e layout ─────────────────────────────── */
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+  }
+
+  h1,h2,h3 {
+    @apply tracking-tight text-foreground;
+  }
+
+  p {
+    @apply text-neutral-700 leading-relaxed;
+  }
+
+  a {
+    @apply underline underline-offset-4 decoration-neutral-300 hover:decoration-accent;
+  }
+
+  ::placeholder {
+    @apply text-neutral-400;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ── Utility riutilizzabili ───────────────────────────────── */
+
+@utility btn {
+  @apply inline-flex items-center justify-center rounded-2xl px-4 py-3 font-medium;
+}
+
+@utility btn-primary {
+  @apply btn bg-accent text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-accent/40;
+}
+
+@utility btn-ghost {
+  @apply btn border border-neutral-300 text-foreground hover:bg-neutral-100;
+}
+
+@utility card {
+  @apply rounded-2xl border border-neutral-200 bg-white shadow-sm;
+}
+
+@utility field {
+  @apply w-full rounded-xl border border-neutral-300 bg-white px-3 py-2 text-foreground placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-accent/40;
+}
+
+@utility label {
+  @apply block text-sm text-foreground mb-1;
+}
+
+@utility muted {
+  @apply text-sm text-neutral-600;
+}
+
+/* Navbar semplice (base) */
+@layer components {
+  .nav-shell {
+    @apply sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-neutral-200;
+  }
+
+  .nav-inner {
+    @apply max-w-5xl mx-auto px-4 py-3 flex items-center justify-between;
+  }
+
+  .nav-links {
+    @apply flex gap-4 text-xs tracking-[0.16em] uppercase text-neutral-500;
+  }
+
+  .nav-link {
+    @apply hover:text-foreground;
+  }
+
+  .nav-link-active {
+    @apply text-foreground;
+  }
 }

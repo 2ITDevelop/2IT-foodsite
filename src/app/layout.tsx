@@ -1,25 +1,26 @@
+// src/app/layout.tsx
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Paninoteca — 2IT",
-  description: "Sito ufficiale della paninoteca. Menu, orari e contatti.",
-  icons: { icon: "/favicon.ico" },
-  openGraph: {
-    title: "Paninoteca — 2IT",
-    description: "Scopri il nostro menu e ordina al banco.",
-    images: ["/og-image.jpg"],
-  },
+  title: "Officina Sottoripa · Panini genovesi",
+  description:
+    "Paninoteca sotto i portici di Sottoripa: piatti tipici genovesi in versione street food.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="it">
-      <body className="bg-white text-neutral-900">
+      {/* niente dark mode automatica: controlli tu i colori in CSS */}
+      <body className="site-root">
         <Navbar />
-        <main className="min-h-[70vh]">{children}</main>
+        <main className="page">{children}</main>
         <Footer />
       </body>
     </html>

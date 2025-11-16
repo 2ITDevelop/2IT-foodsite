@@ -1,10 +1,19 @@
+// src/app/page.tsx
+import { Hero } from "@/components/Hero";
+import { HomeIntro } from "@/components/HomeIntro";
+import ChiSiamoPage from "./chi_siamo/page";
+import MenuPage from "./menu/page";
+
 export default function HomePage() {
   return (
-    <section className="container mx-auto px-4 py-16">
-      <h1 className="text-4xl font-bold">Paninoteca</h1>
-      <p className="mt-4 max-w-prose">
-        Ingredienti freschi, pane caldo, e panini come si deve.
-      </p>
-    </section>
+    <>
+      <Hero />
+      {/* qui puoi importare altre sezioni come componenti separati */}
+      {/* <PaniniHighlight /> */}
+      {/* <TripAdvisorStrip /> */}
+      <HomeIntro />
+      <ChiSiamoPage />
+      <MenuPage />
+    </>
   );
 }
