@@ -9,7 +9,7 @@ const nextConfig: NextConfig = {
           // ❗ Permetti solo al portfolio di incorniciarti
           {
             key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' http://localhost:3000 https://matteoferrea-site.vercel.app",
+            value: "frame-ancestors 'self' http://localhost:3000 https://2it.app",
           },
         ],
       },
